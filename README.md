@@ -2,6 +2,19 @@
 
 A collection of utility functions for use across VizHub packages. This library provides common functionality for working with VizHub visualizations, including ID generation and file manipulation.
 
+## Source and verification
+
+This package exports shared VizHub utility functions, not the hosted VizHub application. Inspect the [`src/index.ts`](src/index.ts) export surface and individual implementation/tests under [`src/`](src/) when checking signatures or behavior. Common utilities include IDs, file collections, and timestamps.
+
+```bash
+npm ci
+npm run typecheck
+npm test
+npm run build
+```
+
+The package publishes ESM, CommonJS and TypeScript declaration entry points. The `@vizhub/viz-types` dependency supplies related types; do not assume an example imported from another VizHub repository targets the same published version.
+
 ## Installation
 
 ```bash
