@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { generateVizId } from "./generateVizId";
 import { isVizId } from "./isVizId";
 
@@ -21,6 +21,17 @@ describe("generateVizId", () => {
   it('should generate a string with "4" as the 13th character', () => {
     const id = generateVizId();
     expect(id[12]).toBe("4");
+  });
+
+  it("fails clearly if Web Crypto is unavailable", () => {
+    vi.stubGlobal("crypto", undefined);
+    try {
+      expect(() => generateVizId()).toThrow(
+        "Web Crypto API (crypto.getRandomValues) is required",
+      );
+    } finally {
+      vi.unstubAllGlobals();
+    }
   });
 
   it("should generate unique IDs", () => {
