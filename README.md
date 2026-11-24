@@ -8,6 +8,7 @@ This package exports shared VizHub utility functions, not the hosted VizHub appl
 
 ```bash
 npm ci
+npm run lint
 npm run typecheck
 npm test
 npm run build
